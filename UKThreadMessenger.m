@@ -67,7 +67,7 @@
 //		2004-11-12	UK	Created.
 // -----------------------------------------------------------------------------
 
--(void) release
+-(oneway void) release
 {
     if( [self retainCount] == 2 && threadRunning )
         threadRunning = NO;
@@ -126,7 +126,7 @@
 	if( ![target respondsToSelector: itemAction] )
 		[self doesNotRecognizeSelector: itemAction];
 	
-	NSInvocation*   inv = [NSInvocation invocationWithMethodSignature: [target methodSignatureForSelector: @selector(itemAction)]];
+	NSInvocation*   inv = [NSInvocation invocationWithMethodSignature: [target methodSignatureForSelector: itemAction]];
 	
     [inv setSelector: itemAction];
     [inv setTarget: target];
